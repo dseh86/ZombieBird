@@ -14,7 +14,7 @@ public class Tuberias : MonoBehaviour
     void Start()
     {
         Debug.Log("Iniciando");
-        float factorposicion = Random.RandomRange(-2,5);
+        float factorposicion = Random.Range(-2,5);
         this.transform.position = new Vector3(transform.position.x, transform.position.y + factorposicion, transform.position.z);
 
     }
