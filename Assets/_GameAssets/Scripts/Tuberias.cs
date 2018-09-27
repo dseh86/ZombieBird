@@ -7,8 +7,10 @@ public class Tuberias : MonoBehaviour
 {
 
     [SerializeField]  private int speed = 8;
+    [SerializeField] float limiteInferior;
+    [SerializeField] float limiteSuperior;
+    [SerializeField] float distanciaDestruccion;          
 
-     
 
     // Use this for initialization
     void Start()
@@ -33,11 +35,6 @@ public class Tuberias : MonoBehaviour
         }
         
 
-
-
     }
-    void GetSpeed()
-    {
-
-    }
+   
 }

@@ -10,7 +10,9 @@ public class PajaroZombi : MonoBehaviour {
     [SerializeField] int puntos = 0;
     [SerializeField] float fuerza = 10f;
     [SerializeField] ParticleSystem prefabExplosion;
-
+    [SerializeField] AudioSource asSonidoMuerte;
+    [SerializeField] AudioSource asSonidoPuntuacion;
+    
     private Rigidbody rb;
 
 	// Use this for initialization
@@ -35,7 +37,6 @@ public class PajaroZombi : MonoBehaviour {
             //Debug.Log("Pulsado espacio con fuerza " + fuerza.ToString());
 
             rb.AddForce(transform.up * fuerza);
-
           
         }
 	}
@@ -45,9 +46,11 @@ public class PajaroZombi : MonoBehaviour {
         //Instanciar el sistema de párticulas sobre FrankenPajaro
         Instantiate(prefabExplosion, transform.position, Quaternion.identity);
 
+        //Sonido cuando muere
+        asSonidoMuerte.Play();
+
         //Desactivar el render del objeto para hacerlo invisible 
         gameObject.SetActive(false);
-
 
         GameConfig.ParaJuego();
 
@@ -66,8 +69,11 @@ public class PajaroZombi : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         puntos++;
+        asSonidoPuntuacion.Play();
         Debug.Log("Puntuación: " + puntos);
+       
         ActualizarMarcador();
+        
     }
 
 
